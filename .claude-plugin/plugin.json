@@ -1,7 +1,7 @@
 {
-  "name": "GitHub README for Perfectionists",
+  "name": "Claudikins GitHub README for Perfectionists",
   "version": "1.0.0",
-  "description": "Craft READMEs that do your code justice. Deep dive into codebases, crystal-ball the roadmap, brain-jam with Gemini, research the think-tank of competing READMEs, then wield the pen.",
+  "description": "Five rituals for README perfection: /deep-dive the codebase, /crystal-ball the roadmap, /brain-jam with Gemini, enter the /think-tank, then /pen-wielding to write.",
   "author": {
     "name": "Ethan Lee"
   },
@@ -9,8 +9,12 @@
     "readme",
     "documentation",
     "github",
-    "co-authoring",
-    "research",
-    "gemini"
+    "claude-code",
+    "gemini",
+    "deep-dive",
+    "crystal-ball",
+    "brain-jam",
+    "think-tank",
+    "pen-wielding"
   ]
 }
