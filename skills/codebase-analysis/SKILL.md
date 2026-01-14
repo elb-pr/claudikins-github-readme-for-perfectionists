@@ -134,7 +134,3 @@ After both Claude and Gemini analyses complete:
 4. **Gaps** - What one caught that other missed
 
 Use `gemini.brainstorming(thinking_level="high")` for synthesis if available.
-
-## Integration with Main Skill
-
-This skill is loaded by the codebase-analyser agent. Return the structured analysis to the main README skill for combination with research findings.

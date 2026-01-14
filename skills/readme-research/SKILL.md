@@ -178,10 +178,6 @@ Identify:
 - [Badge type]: ...
 ```
 
-## Integration with Main Skill
-
-This skill is loaded by the readme-researcher agent. Return the structured research to the main README skill for combination with codebase analysis.
-
 ## Additional Resources
 
 See `references/badge-ecosystem.md` for badge types and signals.
