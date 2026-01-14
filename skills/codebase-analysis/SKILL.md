@@ -1,83 +1,189 @@
 ---
 name: analyzing-codebases
-description: Codebase analysis methodology for README generation. Use when analysing a project to inform documentation, identifying project type and tech stack, extracting value propositions, assessing code quality, or understanding user development patterns from chat history. Covers Serena integration, Gemini code analysis, and structured output formats.
+description: Codebase analysis methodology for README generation. Identifies project type, tech stack, dependencies, CI setup, and user context from chat history.
 ---
 
-# Codebase Analysis for README
+# Codebase Analysis
 
-Methodology for analysing a project to inform README generation.
+Identify what the project IS, not what it could be. Facts only.
 
-## Analysis Sources
+## Project Type Detection
 
-### 1. Codebase Analysis
+### Entry Point Analysis
 
-**Tools to use:**
-- **Serena** (if available): Semantic code search, class hierarchies, architecture understanding
-- **Glob/Grep/Read**: File structure, dependencies, entry points
+| Files Present | Likely Type |
+|---------------|-------------|
+| `bin/`, shebang in main | CLI tool |
+| `src/index.ts` with exports | Library |
+| `src/main.ts` or `app.ts` | Application |
+| `plugin.json`, `.claude-plugin/` | Plugin |
+| `src/server.ts`, `app.py` | API/Server |
+| `Dockerfile` only | Container |
+| `setup.py` with console_scripts | Python CLI |
+| `Cargo.toml` with [[bin]] | Rust CLI |
 
-**Extract:**
+### Package.json Indicators
 
-| Category | What to Find | How |
-|----------|--------------|-----|
-| Project Type | CLI, library, framework, plugin, app, API | Entry points, package.json scripts, main files |
-| Tech Stack | Languages, frameworks, dependencies | package.json, requirements.txt, Cargo.toml, etc. |
-| Value Proposition | What problem it solves | README fragments, comments, package description |
-| Entry Points | Where users start | main, index, bin, exports |
-| Prerequisites | Runtime, system deps | engines field, Dockerfile, CI configs |
-| CI/Automation | Test/build setup | .github/workflows, CI configs |
-| Existing Docs | What's already documented | README, docs/, wiki |
-
-**Gemini Integration:**
-
-Run these in parallel:
-```
-gemini.analyze_code(code, focus="quality")
-gemini.analyze_code(code, focus="security")
-gemini.analyze_code(code, focus="performance")
-gemini.analyze_code(code, focus="bugs")
+```json
+{
+  "bin": { "cmd": "./dist/cli.js" },     // CLI
+  "main": "./dist/index.js",              // Library
+  "exports": { ".": "./dist/index.js" },  // Modern library
+  "scripts": { "start": "node server.js" } // Application
+}
 ```
 
-### 2. Chat History Analysis
+## Tech Stack Extraction
+
+### Dependency Files
+
+| File | Ecosystem |
+|------|-----------|
+| `package.json` | Node.js/JavaScript |
+| `requirements.txt`, `pyproject.toml` | Python |
+| `Cargo.toml` | Rust |
+| `go.mod` | Go |
+| `Gemfile` | Ruby |
+| `pom.xml`, `build.gradle` | Java |
+| `composer.json` | PHP |
+
+### Framework Detection
+
+**JavaScript/TypeScript:**
+- `react`, `vue`, `angular` - Frontend framework
+- `express`, `fastify`, `koa` - Backend framework
+- `electron` - Desktop app
+- `react-native` - Mobile app
+
+**Python:**
+- `fastapi`, `flask`, `django` - Web framework
+- `click`, `typer`, `argparse` - CLI framework
+- `pytorch`, `tensorflow` - ML framework
+
+### Build Tool Detection
+
+| Tool | Files |
+|------|-------|
+| TypeScript | `tsconfig.json` |
+| Webpack | `webpack.config.js` |
+| Vite | `vite.config.ts` |
+| esbuild | `esbuild` in scripts |
+| Rollup | `rollup.config.js` |
+| Babel | `.babelrc`, `babel.config.js` |
+
+## Dependencies & Prerequisites
+
+### Runtime Requirements
+
+**From package.json:**
+```json
+{ "engines": { "node": ">=18.0.0", "npm": ">=9.0.0" } }
+```
+
+**From pyproject.toml:**
+```toml
+[project]
+requires-python = ">=3.10"
+```
+
+**From Cargo.toml:**
+```toml
+[package]
+rust-version = "1.70"
+```
+
+### System Dependencies
+
+**Check these files:**
+- `Dockerfile` - RUN apt-get install commands
+- `.github/workflows/*.yml` - setup steps
+- `Makefile` - prerequisite checks
+- `INSTALL.md` or `docs/installation.md`
+
+**Common system deps:**
+- `libssl-dev` - cryptography
+- `libpq-dev` - PostgreSQL
+- `ffmpeg` - media processing
+- `graphviz` - diagram generation
+
+## Entry Points & API Surface
+
+**What does the project export/expose?**
+
+- Main function/export in index file
+- CLI commands from bin directory
+- API routes from server files
+- Public methods from library exports
+
+**CLI help text extraction:**
+```typescript
+program
+  .name('my-tool')
+  .description('Process files with advanced filtering')
+  .version('1.0.0');
+```
+
+**Value proposition sources:**
+- `package.json` description field
+- Module-level docstrings
+- JSDoc on main exports
+- Existing README fragments
+
+## CI/Automation Detection
+
+### GitHub Actions
+
+**Badge sources from workflows:**
+- Workflow status - Build badge
+- `codecov/codecov-action` - Coverage badge
+- Release workflow - Version badge
+
+### Other CI
+
+| Service | Config File |
+|---------|-------------|
+| CircleCI | `.circleci/config.yml` |
+| Travis | `.travis.yml` |
+| GitLab CI | `.gitlab-ci.yml` |
+| Jenkins | `Jenkinsfile` |
+
+## Chat History Context
 
 **Source:** `~/.claude/history.jsonl`
 
-**Format:** JSONL with fields:
-- `display`: User's message/request
-- `project`: Project being worked on
-- `timestamp`: Unix timestamp (milliseconds)
-- `pastedContents`: Code or content pasted
+Filter entries where `project` matches the current project path.
 
-**Extract:**
+**JSONL format:**
+```json
+{"display": "User message", "project": "/path/to/project", "timestamp": 1704067200000}
+```
 
-| Category | What to Find | Why It Matters |
-|----------|--------------|----------------|
-| Projects & Domains | What types of projects user builds | Audience calibration |
-| Technologies Used | Languages, frameworks in conversations | Tech stack validation |
-| Problem Types | Categories of problems solved | Documentation focus areas |
-| Challenges | Repeated questions, struggles | Where to add extra clarity |
-| Approach Patterns | How user solves problems | Writing style matching |
+### Pattern Extraction
 
-**Challenge Detection:**
-- Repeated questions about same topics → knowledge gap
-- Problems requiring multiple attempts → complex area needing docs
-- Questions indicating confusion → unclear concepts
+**Repeated questions (knowledge gaps):**
+- "How do I..." patterns
+- "Why isn't..." patterns
+- "What's the difference between..." patterns
 
-### 3. Issue Detection
+**Problem categories:**
+- Configuration/Setup
+- Debugging/Errors
+- Feature implementation
+- Performance
+- Testing
+- Deployment
 
-**Find and report:**
+### README Implications
 
-| Issue Type | Detection Method | README Implication |
-|------------|------------------|-------------------|
-| Dead code | Serena unused symbols | Don't document deprecated features |
-| Missing tests | Coverage gaps | Note testing status honestly |
-| Outdated deps | Version checks | Update prerequisites section |
-| Security issues | Gemini security analysis | Add security section or warnings |
-| Performance issues | Gemini performance analysis | Document performance characteristics |
-| Broken links | Existing README link check | Fix before generating new content |
+| Pattern Found | README Implication |
+|---------------|-------------------|
+| Repeated config questions | Detailed configuration section |
+| Debugging struggles | Troubleshooting section |
+| "How do I test" questions | Testing section with examples |
+| Performance questions | Performance section |
+| Deployment questions | Deployment guides |
 
 ## Output Format
-
-Return structured analysis:
 
 ```markdown
 # Codebase Analysis
@@ -93,44 +199,24 @@ Return structured analysis:
 - **System:** [any system dependencies]
 - **Dev:** [dev dependencies of note]
 
-## Code Quality (Claude + Gemini Combined)
+## Entry Points
+- [file:line] - [what it does]
 
-### Quality Issues
-- [issue 1]
-- [issue 2]
-
-### Security Concerns
-- [concern 1]
-
-### Performance Notes
-- [note 1]
-
-### Bugs Found
-- [bug 1]
-
-## Improvement Suggestions
-- [suggestion 1: what to fix/add]
-- [suggestion 2]
-
-## User Patterns (from Chat History)
-- **Typical Projects:** [what they build]
-- **Common Struggles:** [repeated questions]
-- **Skill Level:** [indicators of expertise]
-
-## README Implications
-- **Suggested Prerequisites:** [based on deps analysis]
+## CI/Automation
+- **Build:** [workflow files]
 - **Badge Sources:** [CI, coverage, package manager]
-- **Complexity Level:** [how technical to write]
-- **Focus Areas:** [based on user struggles]
+
+## User Context (from Chat History)
+- **Common Struggles:** [repeated questions]
+- **Decisions Made:** [key decisions from history]
+- **Focus Areas:** [topics frequently discussed]
 ```
 
-## Synthesis with Gemini
+## Important
 
-After both Claude and Gemini analyses complete:
-
-1. **Compare findings** - What did each identify?
-2. **Agreements** - High confidence findings
-3. **Differences** - Resolve or note both perspectives
-4. **Gaps** - What one caught that other missed
-
-Use `gemini.brainstorming(thinking_level="high")` for synthesis if available.
+- Focus on FACTS, not improvements
+- Be specific with file:line references
+- Note confidence levels:
+  - **High:** Extracted from config files
+  - **Medium:** Inferred from patterns
+  - **Low:** Guessed from structure
