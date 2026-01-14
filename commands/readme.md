@@ -89,29 +89,55 @@ await gemini["gemini-brainstorm"]({
    - `roadmap-analyser` - Big O, performance gaps, tech debt, security, features
 
 2. After agents return, call Gemini ONCE (execute_code):
-   - `gemini-analyze-code` with focus: "general" on core files (covers quality, security, perf, bugs)
+   - `gemini-analyze-code` with focus: "general" on core files
 
-3. Then:
-   - `gemini-summarize` - condense 3 outputs into key findings (type, stack, strengths, opportunities)
-   - `gemini-brainstorm` - "What's most impressive? What should we highlight? What needs explaining?"
+3. Summarise: `gemini-summarize` - condense 3 outputs into key findings
 
 4. Present: "Here's what I found about your project: [specifics]. Does this match your understanding?"
+
+**IMPORTANT:** Save the roadmap-analyser output - you'll need it for the Roadmap section.
 
 ## Phase 2: Research (uses Phase 1 context)
 
 Using Phase 1 context (e.g., "TypeScript CLI tool using Commander.js for fuzzy file search"):
 
 1. Spawn agent (Task tool):
-   - `readme-researcher` - find exemplar READMEs for THIS project type (e.g., fzf, ripgrep, fd)
+   - `readme-researcher` - find exemplar READMEs for THIS project type
 
 2. After agent returns, call Gemini (execute_code):
-   - `gemini-deep-research` - "README patterns for TypeScript CLI tools. Similar to: fzf, ripgrep. Focus: fuzzy search"
+   - `gemini-deep-research` - "README patterns for [projectType] [techStack]. Similar to: [exemplars]. Focus: [valueProposition]"
 
-3. Then:
-   - `gemini-summarize` - condense into patterns that work (GIF demos, benchmarks, install methods)
-   - `gemini-brainstorm` - "Given fzf uses GIF + minimal, ripgrep uses benchmarks + detailed, which fits THIS project?"
+3. Summarise: `gemini-summarize` - condense into patterns that work
 
-4. Present: "Based on similar tools, I'd recommend [approach] because [reason]. Alternative: [approach]. Which fits?"
+4. Present findings to user, confirm understanding
+
+## Phase 2.5: THE BIG BRAINSTORM
+
+**This is the creative explosion.** After gathering ALL information (codebase, roadmap, research), do ONE expansive brainstorm:
+
+```typescript
+await gemini["gemini-brainstorm"]({
+  prompt: `I have all this context about a ${projectType}:
+
+  WHAT IT IS: ${codebaseFindings}
+  WHAT IT COULD BE: ${roadmapFindings}
+  WHAT WORKS FOR SIMILAR PROJECTS: ${researchFindings}
+
+  Generate LOTS of creative ideas for this README:
+  - Hero section approaches (GIF? diagram? code?)
+  - How to frame the value proposition
+  - What deserves a Roadmap section
+  - Visual opportunities (Mermaid diagrams, screenshots)
+  - Unique angles competitors don't use
+  - What tone fits this project
+
+  Be expansive. Generate many options.`,
+  claudeThoughts: "My initial thoughts on what could work...",
+  thinkingLevel: "high"
+});
+```
+
+Then present the best ideas to the user: "Here's what we came up with. Which resonates?"
 
 ## Phase 3: Style
 
@@ -120,38 +146,63 @@ Ask one at a time:
 1. **Spelling**: British or American?
 2. **Tone**: Minimal / Conversational / Opinionated / Reference?
 
-## Phase 4: Writing
+## Phase 4: Structure Decision
 
-For each section (e.g., Installation):
+Based on the brainstorm, decide structure WITH the user:
 
-1. Spawn `readme-writer` with:
-   - Section name: "Installation"
-   - Findings: "npm package, requires Node 18+, has Docker option"
-   - Preferences: "British spelling, minimal tone"
-   - Exemplar pattern: "fzf uses brew + cargo + source"
+1. Present recommended sections (including Roadmap if roadmap-analyser found good content)
+2. Ask: "Does this structure cover what you need?"
+3. Iterate until user approves structure
 
-2. `gemini-brainstorm` - "Is the tone consistent? Is TTJ ≤3 commands? Missing any install method?"
+**Standard sections to consider:**
+- Hero (banner, badges, tagline)
+- What is this / Problem-Solution
+- Installation
+- Quick Start
+- Usage (with collapsible advanced)
+- Configuration
+- **Roadmap** (from roadmap-analyser findings)
+- Contributing
+- License
 
-3. Present: "Here's the Installation section: [draft]. Does this cover your users' needs?"
+## Phase 5: FINAL WRITE
 
-4. Iterate if user wants changes
+**The writer produces the COMPLETE README in one go.** Not per-section.
 
-**Metrics to enforce (tell the writer):**
+Spawn `readme-writer` ONCE with EVERYTHING:
+
+```
+- Approved structure: [list of sections]
+- Codebase findings: [from codebase-analyser]
+- Roadmap findings: [from roadmap-analyser - USE THIS FOR ROADMAP SECTION]
+- Research patterns: [from readme-researcher]
+- Style: [spelling, tone]
+- Brainstorm ideas: [best ideas from Phase 2.5]
+```
+
+The writer returns THE COMPLETE README.
+
+Present to user: "Here's the complete README. What needs adjustment?"
+
+Iterate with targeted edits (Edit tool, not re-spawning writer for small changes).
+
+**Metrics to enforce:**
 - Time to Joy ≤ 3 commands
 - Flesch-Kincaid Grade 8-10
 - Visual every 300 words
 
-## Phase 5: Assembly
+## Phase 6: Final Checklist
 
-1. Combine all approved sections
-2. Final checklist with user:
-   - [ ] Hero section (banner, 5-7 badges, tagline)
-   - [ ] Value proposition clear in first 30 seconds
-   - [ ] Installation is copy-pasteable
-   - [ ] Quick start actually works
-   - [ ] No walls of text
-   - [ ] All links valid
-3. Write README.md
+Before writing to file:
+- [ ] Hero section complete (banner, 5-7 badges, tagline)
+- [ ] Value proposition clear in first 30 seconds
+- [ ] Installation is copy-pasteable
+- [ ] Quick start actually works
+- [ ] **Roadmap section included** (if roadmap-analyser found content)
+- [ ] No walls of text
+- [ ] All links valid
+
+Then write README.md
 
 ## Modes
 
