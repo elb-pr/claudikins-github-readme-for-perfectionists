@@ -1,0 +1,16 @@
+{
+  "name": "claudikins-github-readme",
+  "version": "1.0.0",
+  "description": "General-purpose README writer with dual-AI architecture. Analyses codebases and user patterns, researches competitor READMEs, and co-authors technical documentation through Claude + Gemini collaborative synthesis. Supports create and update modes with diff-merge capability.",
+  "author": {
+    "name": "Ethan Lee"
+  },
+  "keywords": [
+    "readme",
+    "documentation",
+    "github",
+    "co-authoring",
+    "research",
+    "gemini"
+  ]
+}
