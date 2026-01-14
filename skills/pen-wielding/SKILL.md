@@ -1,19 +1,26 @@
 ---
-name: writing-readmes
-description: README writing methodology with structural templates, visual engineering, and quality metrics. Use when writing README content, drafting documentation sections, applying style preferences, or producing high-quality technical documentation. Covers section templates, badge guidelines, SEO best practices, and anti-patterns to avoid.
+name: pen-wielding
+description: "Time to wield the pen. Write the complete README based on all gathered context."
 ---
 
-# README Writing Methodology
+# Pen-Wielding Time
 
-Produce high-quality README sections following proven structural patterns and quality metrics.
+Alright, time to wield the pen...
 
-## Input Required
+## What You Have
 
-Before writing, ensure you have:
-- **Approved structure:** Which sections to write
-- **Codebase analysis:** Project details, value prop, dependencies
-- **Research findings:** Patterns to use, anti-patterns to avoid
-- **Style preferences:** Spelling (British/American), tone
+By now you should have:
+- Deep dive findings (what it IS)
+- Crystal ball insights (what it COULD BE)
+- Brain-jam angle (how to frame it)
+- Think-tank patterns (what works for similar projects)
+- User's style preferences
+
+## What You Write
+
+THE COMPLETE README. All sections. Ready to ship.
+
+**Include a Roadmap section** if crystal-ball found good opportunities.
 
 ## Writing Rules (Always Enforced)
 
@@ -163,20 +170,11 @@ flowchart LR
 | Badge count | 5-7 | Curate to essentials |
 | Quick start visibility | < 30 seconds | Move above the fold |
 
-## Output Process
+## Final Check
 
-1. Write ONE section at a time
-2. Target 200-300 words per section
-3. Present for review before next section
-4. Incorporate feedback immediately
-5. Return as Markdown text
+After writing:
 
-## Pre-Commit Checklist
-
-- [ ] No paragraph > 4 sentences
-- [ ] Headers are semantic and searchable
-- [ ] All code examples have output
-- [ ] All images have alt text
-- [ ] No em dashes (—)
-- [ ] Prerequisites have versions
-- [ ] Quick start < 30 seconds to working example
+- Present the complete README
+- Ask: "README complete. Want to refine anything, or ship it?"
+- If refine -> make edits
+- If ship -> write to README.md, commit, done
