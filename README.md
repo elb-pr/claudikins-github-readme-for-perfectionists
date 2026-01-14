@@ -1,4 +1,4 @@
-# claudikins-github-readme
+# claudikins-grfp
 
 A Claude Code plugin that writes high-quality README files through dual-AI collaborative analysis.
 
