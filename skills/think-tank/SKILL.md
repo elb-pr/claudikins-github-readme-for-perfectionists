@@ -1,9 +1,11 @@
 ---
-name: researching-readmes
-description: Competitive research methodology for README documentation. Use when finding exemplar READMEs, scoring README quality, extracting patterns from top repositories, or recommending badges and sections based on project type. Covers search strategies, scoring rubrics, and pattern extraction.
+name: think-tank
+description: "Enter the think-tank. Research exemplar READMEs from similar projects. Patterns that work, anti-patterns to avoid."
 ---
 
-# README Research Methodology
+# The Think-Tank
+
+Time to enter the think-tank...
 
 Systematic approach to researching high-quality READMEs for pattern extraction.
 
@@ -194,3 +196,11 @@ Base recommendations on what top exemplars use:
 
 See `references/badge-ecosystem.md` for complete badge sources and examples.
 See `references/scoring-rubric.md` for detailed scoring criteria and checklists.
+
+## Handoff
+
+After presenting research:
+
+- Ask: "Think-tank session complete. Happy with these patterns, or dig deeper? Ready to wield the pen?"
+- If refine -> more research
+- If continue -> Use `pen-wielding`
