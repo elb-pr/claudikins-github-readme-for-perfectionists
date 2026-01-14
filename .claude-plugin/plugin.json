@@ -1,7 +1,7 @@
 {
-  "name": "claudikins-github-readme",
+  "name": "GitHub README for Perfectionists",
   "version": "1.0.0",
-  "description": "General-purpose README writer with dual-AI architecture. Analyses codebases and user patterns, researches competitor READMEs, and co-authors technical documentation through Claude + Gemini collaborative synthesis. Supports create and update modes with diff-merge capability.",
+  "description": "Craft READMEs that do your code justice. Deep dive into codebases, crystal-ball the roadmap, brain-jam with Gemini, research the think-tank of competing READMEs, then wield the pen.",
   "author": {
     "name": "Ethan Lee"
   },
