@@ -22,6 +22,8 @@ AI-generated documentation has a smell. You know it when you read it: *"This too
 
 ## Quick Start
 
+Requires [claudikins-marketplace](https://github.com/aMilkStack/claudikins-marketplace):
+
 ```bash
 /plugin install claudikins-grfp
 ```
