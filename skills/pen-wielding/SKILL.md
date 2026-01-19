@@ -10,6 +10,7 @@ description: "Writes the complete README by synthesising outputs from deep-dive,
 ## Step 1: Ingest Context
 
 Read the outputs from the preparatory skills:
+
 1. **Facts:** `deep-dive` report (Stack, friction points, install complexity)
 2. **Future:** `crystal-ball` analysis (Roadmap table, technical debt)
 3. **Voice:** `brain-jam` decision (The chosen angle: Deep Tech vs Pragmatic)
@@ -22,16 +23,20 @@ Read the outputs from the preparatory skills:
 ## Step 2: Load Standards
 
 Read the governance files to establish the form:
-1. `references/style-guide.md` (The "Anti-Slop" rules and Banned Words)
-2. `references/structural-templates.md` (The section templates)
-3. `references/visual-engineering.md` (The density and diagram rules)
-4. `references/anti-patterns.md` (The final checklist)
+
+1. `references/style-guide.md` (Anti-Slop rules, Banned Words, Humanisation Patterns, Reusable Phrases)
+2. `references/structural-templates.md` (Section templates, Results/Metrics tables, Do/Don't patterns)
+3. `references/visual-engineering.md` (Density rules, diagrams, ASCII visualisations)
+4. `references/anti-patterns.md` (Final checklist, Writing/Research anti-patterns)
+
+**Note:** The reference files include patterns integrated from the influencer-skills-synthesis research (archived at `../grfp/reference/influencer-skills-synthesis.md`).
 
 ---
 
 ## Step 3: Writing Rules (Always Enforced)
 
 ### Style
+
 - Clear and concise, active voice
 - Important information first
 - **No M dash (—) EVER** - use hyphens or restructure
@@ -39,15 +44,18 @@ Read the governance files to establish the form:
 - No paragraph > 4 sentences
 
 ### The "Anti-Slop" Filter
+
 - **Check every sentence** against the Banned Words list (No "Delve", "Seamless", "Unleash")
 - **Never use "The Problem / The Solution" framing** - it's lazy and cliched
 - **Enforce Patterns:**
-  - Use **"The Hook"** (Pattern A) in the *Description*
-  - Use **"The Hammer"** (Pattern B) in the *Features* list
-  - Use **"The Trust Builder"** (Pattern C) in *Usage/Configuration*
+  - Use **"The Hook"** (Pattern A) in the _Description_
+  - Use **"The Hammer"** (Pattern B) in the _Features_ list
+  - Use **"The Trust Builder"** (Pattern C) in _Usage/Configuration_
 
 ### Spelling Consistency
+
 Pick one and stick to it:
+
 - **British:** colour, optimise, analyse, behaviour, centre, finalising
 - **American:** color, optimize, analyze, behavior, center, finalizing
 
@@ -58,6 +66,7 @@ Pick one and stick to it:
 Write sections in this order:
 
 ### 1. Hero Section
+
 ```markdown
 <p align="center"><img src="banner.png" alt="Project Name" width="600"></p>
 <p align="center">
@@ -71,35 +80,42 @@ Write sections in this order:
 ```
 
 ### 2. Description
+
 ```markdown
 ## What is [Project]?
 
 [Project] does X for Y. Instead of [tedious manual approach], you [simple action] and get [result].
 
 **Key Features:**
+
 - [Feature 1]: [Benefit]
 - [Feature 2]: [Benefit]
 ```
 
 ### 3. Installation
+
 ```markdown
 ## Installation
 
 ### Prerequisites
+
 - Node.js 18+ (LTS recommended)
 
 ### Package Manager
+
 \`\`\`bash
 npm install project-name
 \`\`\`
 
 ### Docker (if Time-to-Joy > 3 commands)
+
 \`\`\`bash
 docker run -it project-name
 \`\`\`
 ```
 
 ### 4. Quick Start
+
 ```markdown
 ## Quick Start
 
@@ -115,10 +131,12 @@ Expected output here
 ```
 
 ### 5. Usage (with collapsible advanced)
+
 ```markdown
 ## Usage
 
 ### Basic Usage
+
 [Code example with explanation]
 
 <details>
@@ -130,9 +148,10 @@ Expected output here
 ```
 
 ### 6. Configuration (table format)
+
 ```markdown
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
+| Option    | Type   | Default     | Description  |
+| --------- | ------ | ----------- | ------------ |
 | `option1` | string | `"default"` | What it does |
 ```
 
@@ -142,30 +161,35 @@ Expected output here
 
 ### When to Use What
 
-| Visual Type | Use Case | Tool |
-|-------------|----------|------|
-| Terminal GIF | CLI tools, workflows | VHS |
-| Diagram | Architecture, data flow | Mermaid |
-| Screenshot | UI apps, dashboards | With alt text |
+| Visual Type  | Use Case                | Tool          |
+| ------------ | ----------------------- | ------------- |
+| Terminal GIF | CLI tools, workflows    | VHS           |
+| Diagram      | Architecture, data flow | Mermaid       |
+| Screenshot   | UI apps, dashboards     | With alt text |
 
 ### Visual Density
+
 **Target:** 1 visual per 300 words. If exceeded, add code block, diagram, or break into subsections.
 
 ### Mermaid Diagrams (GitHub-native)
+
 ```markdown
 \`\`\`mermaid
 flowchart LR
-    A[Input] --> B[Process] --> C[Output]
+A[Input] --> B[Process] --> C[Output]
 \`\`\`
 ```
 
 ### Visual Placeholders
+
 Insert specific placeholders for visuals identified in `think-tank`:
+
 ```markdown
 > **Visual:** [Description from think-tank] (Use tool: VHS/Mermaid)
 ```
 
 ### Accessibility Requirements
+
 - **Alt text:** Always descriptive, never empty
 - Bad: `![](image.png)`
 - Good: `![Architecture diagram showing client-server flow](arch.png)`
@@ -174,32 +198,32 @@ Insert specific placeholders for visuals identified in `think-tank`:
 
 ## Step 6: Anti-Patterns (Never Do)
 
-| Anti-Pattern | Problem | Fix |
-|--------------|---------|-----|
-| Wall of text | Unreadable | Max 4 sentences per paragraph |
-| Badge overload | Cluttered | Max 5-7 essential badges |
-| Generic headers | Poor SEO | Semantic: "High-Performance Parsing" not "Features" |
-| Missing prerequisites | Broken installs | Explicit versions: "Node.js 18+" |
-| No output shown | Confusing | Always show expected result |
-| M dash (—) | Rendering issues | Use hyphens or restructure |
-| Buried quick start | User abandonment | Within first screen view |
-| Copy-paste friction | User errors | Working defaults, note what to change |
-| Click here links | Poor accessibility | Descriptive link text |
-| H1 just project name | Poor SEO | Include core function |
-| "The Problem / The Solution" | Cliched, lazy | Show value directly |
+| Anti-Pattern                 | Problem            | Fix                                                 |
+| ---------------------------- | ------------------ | --------------------------------------------------- |
+| Wall of text                 | Unreadable         | Max 4 sentences per paragraph                       |
+| Badge overload               | Cluttered          | Max 5-7 essential badges                            |
+| Generic headers              | Poor SEO           | Semantic: "High-Performance Parsing" not "Features" |
+| Missing prerequisites        | Broken installs    | Explicit versions: "Node.js 18+"                    |
+| No output shown              | Confusing          | Always show expected result                         |
+| M dash (—)                   | Rendering issues   | Use hyphens or restructure                          |
+| Buried quick start           | User abandonment   | Within first screen view                            |
+| Copy-paste friction          | User errors        | Working defaults, note what to change               |
+| Click here links             | Poor accessibility | Descriptive link text                               |
+| H1 just project name         | Poor SEO           | Include core function                               |
+| "The Problem / The Solution" | Cliched, lazy      | Show value directly                                 |
 
 ---
 
 ## Step 7: Quality Metrics
 
-| Metric | Target | Action if Violated |
-|--------|--------|-------------------|
-| Flesch-Kincaid | Grade 8-10 | Simplify sentences |
-| Time to Joy | <=3 commands | Add Docker/Makefile |
-| Visual density | 1 per 300 words | Add code block/diagram |
-| Badge count | 5-7 | Curate to essentials |
-| Quick start visibility | < 30 seconds | Move above the fold |
-| Delve Index | 0 | Remove banned words |
+| Metric                 | Target          | Action if Violated     |
+| ---------------------- | --------------- | ---------------------- |
+| Flesch-Kincaid         | Grade 8-10      | Simplify sentences     |
+| Time to Joy            | <=3 commands    | Add Docker/Makefile    |
+| Visual density         | 1 per 300 words | Add code block/diagram |
+| Badge count            | 5-7             | Curate to essentials   |
+| Quick start visibility | < 30 seconds    | Move above the fold    |
+| Delve Index            | 0               | Remove banned words    |
 
 ---
 
@@ -208,24 +232,28 @@ Insert specific placeholders for visuals identified in `think-tank`:
 **Before finalising, cross-check against each preparatory step:**
 
 ### Deep Dive Verification
+
 - [ ] Tech stack mentioned matches deep-dive findings
 - [ ] Prerequisites include all system dependencies identified
 - [ ] Entry points documented match identified entry points
 - [ ] Installation steps work for the detected ecosystem
 
 ### Crystal Ball Verification
+
 - [ ] Roadmap section included (if opportunities identified)
 - [ ] Future features mentioned align with crystal-ball analysis
 - [ ] Technical debt items acknowledged where relevant
 - [ ] Version/maturity signals match project state
 
 ### Brain-Jam Verification
+
 - [ ] Tone matches the chosen angle (Deep Tech vs Pragmatic vs etc.)
 - [ ] Voice is consistent throughout
 - [ ] Marketing angle applied to hero section and description
 - [ ] Target audience language used appropriately
 
 ### Think-Tank Verification
+
 - [ ] Badge selection matches think-tank recommendations
 - [ ] Section order follows the researched blueprint
 - [ ] Visual strategy implemented as planned
@@ -237,6 +265,7 @@ Insert specific placeholders for visuals identified in `think-tank`:
 ## Step 9: The Final Audit
 
 Before outputting, review against `references/anti-patterns.md`:
+
 - [ ] Are paragraphs < 4 sentences?
 - [ ] Are M-dashes (—) removed?
 - [ ] Is the "Delve" index 0?
@@ -251,5 +280,6 @@ Before outputting, review against `references/anti-patterns.md`:
 Present the final README in a single, copy-pasteable Markdown block.
 
 **Ask:** "README complete. Want to refine anything, or ship it?"
+
 - If refine -> make edits
 - If ship -> write to README.md, commit, done

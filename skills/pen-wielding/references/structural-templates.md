@@ -92,21 +92,23 @@ The top 600px (above the fold) must contain: Identity, Trust, Value, Navigation.
 
 Order badges by what users verify first:
 
-| Priority | Category | Signal |
-|----------|----------|--------|
-| 1 | Operational Status | "Safe to use" (Build, Coverage, Version) |
-| 2 | Social Proof | "Others trust this" (Downloads, Stars) |
-| 3 | Communication | "Support available" (Discord, Twitter) |
-| 4 | Metadata | "Legal compliance" (License, Code Style) |
+| Priority | Category           | Signal                                   |
+| -------- | ------------------ | ---------------------------------------- |
+| 1        | Operational Status | "Safe to use" (Build, Coverage, Version) |
+| 2        | Social Proof       | "Others trust this" (Downloads, Stars)   |
+| 3        | Communication      | "Support available" (Discord, Twitter)   |
+| 4        | Metadata           | "Legal compliance" (License, Code Style) |
 
 ### Value Proposition Examples
 
 **Effective (filters audience, states differentiator):**
+
 - "TypeScript-first schema validation with static type inference"
 - "A cat(1) clone with syntax highlighting and Git integration"
 - "Like grep, but faster and respects .gitignore"
 
 **Ineffective (says nothing):**
+
 - "A powerful tool for developers"
 - "The best solution for your needs"
 
@@ -134,6 +136,7 @@ Anchor to known tools, then differentiate:
 [Project] does X for Y. Instead of [tedious manual approach], you [simple action] and get [result].
 
 **Key Features:**
+
 - [Feature 1]: [Benefit]
 - [Feature 2]: [Benefit]
 - [Feature 3]: [Benefit]
@@ -152,8 +155,8 @@ For libraries, show the API immediately:
 import { schema } from 'project-name';
 
 const User = schema.object({
-  name: schema.string(),
-  age: schema.number().positive(),
+name: schema.string(),
+age: schema.number().positive(),
 });
 
 type User = schema.infer<typeof User>;
@@ -168,11 +171,11 @@ Zero dependencies. 2kb gzipped. Full TypeScript support.
 
 ### When to Include
 
-| README Length | TOC Required |
-|---------------|--------------|
-| < 500 words | No |
-| 500-1000 words | Optional |
-| > 1000 words | Yes |
+| README Length  | TOC Required |
+| -------------- | ------------ |
+| < 500 words    | No           |
+| 500-1000 words | Optional     |
+| > 1000 words   | Yes          |
 
 ### Template
 
@@ -205,19 +208,24 @@ Zero dependencies. 2kb gzipped. Full TypeScript support.
 ## Installation
 
 ### Prerequisites
+
 - [Requirement 1] (version X+)
 - [Requirement 2]
 
 ### Package Managers
 
 \`\`\`bash
+
 # macOS
+
 brew install project-name
 
 # Ubuntu/Debian
+
 sudo apt install project-name
 
 # Windows
+
 choco install project-name
 \`\`\`
 
@@ -263,6 +271,7 @@ Open http://localhost:3000 to see your app.
 ### The "Copy-Paste Ready" Rule
 
 Every code example must:
+
 1. Work when copy-pasted (no `...` or `[your-thing-here]`)
 2. Show expected output
 3. Use realistic values, not `foo` and `bar`
@@ -274,8 +283,8 @@ Every code example must:
 import { createApp } from 'project-name';
 
 const app = createApp({
-  port: 3000,
-  logger: true,
+port: 3000,
+logger: true,
 });
 
 app.get('/', () => ({ message: 'Hello World' }));
@@ -315,9 +324,9 @@ Server running at http://localhost:3000
 
 ### Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `DEBUG` | `false` | Enable debug logging |
+| Variable | Default | Description          |
+| -------- | ------- | -------------------- |
+| `DEBUG`  | `false` | Enable debug logging |
 
 </details>
 ```
@@ -345,11 +354,11 @@ Server running at http://localhost:3000
 ```markdown
 ## Configuration
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `port` | `number` | `3000` | Server port |
-| `logger` | `boolean` | `false` | Enable request logging |
-| `timeout` | `number` | `30000` | Request timeout in ms |
+| Option    | Type      | Default | Description            |
+| --------- | --------- | ------- | ---------------------- |
+| `port`    | `number`  | `3000`  | Server port            |
+| `logger`  | `boolean` | `false` | Enable request logging |
+| `timeout` | `number`  | `30000` | Request timeout in ms  |
 ```
 
 ### Collapsible Full Config
@@ -366,9 +375,9 @@ Basic configuration:
 
 \`\`\`json
 {
-  "port": 3000,
-  "host": "0.0.0.0",
-  "logger": { "level": "info", "prettyPrint": true }
+"port": 3000,
+"host": "0.0.0.0",
+"logger": { "level": "info", "prettyPrint": true }
 }
 \`\`\`
 
@@ -386,10 +395,10 @@ Basic configuration:
 
 ### Official Plugins
 
-| Plugin | Description |
-|--------|-------------|
-| [@project/auth](link) | Authentication middleware |
-| [@project/cache](link) | Redis caching layer |
+| Plugin                 | Description               |
+| ---------------------- | ------------------------- |
+| [@project/auth](link)  | Authentication middleware |
+| [@project/cache](link) | Redis caching layer       |
 
 ### Community Plugins
 
@@ -454,29 +463,34 @@ For projects using Turborepo, Nx, or similar:
 ```markdown
 ## Packages
 
-| Package | Description | Docs |
-|---------|-------------|------|
-| `@project/core` | Core functionality | [README](./packages/core) |
-| `@project/cli` | Command line interface | [README](./packages/cli) |
-| `@project/react` | React bindings | [README](./packages/react) |
+| Package          | Description            | Docs                       |
+| ---------------- | ---------------------- | -------------------------- |
+| `@project/core`  | Core functionality     | [README](./packages/core)  |
+| `@project/cli`   | Command line interface | [README](./packages/cli)   |
+| `@project/react` | React bindings         | [README](./packages/react) |
 
 ## Quick Start
 
 \`\`\`bash
+
 # Clone and install
+
 git clone https://github.com/user/project
 cd project
 pnpm install
 
 # Run all packages in dev mode
+
 pnpm dev
 
 # Run specific package
+
 pnpm --filter @project/cli dev
 \`\`\`
 ```
 
 **Key differences from single-package:**
+
 - Root README is a "router" to sub-packages
 - Each package has its own README
 - Installation shows workspace commands (pnpm, yarn workspaces)
@@ -492,10 +506,10 @@ For major version upgrades:
 
 ### Breaking Changes
 
-| v2 | v3 | Migration |
-|----|----|-----------|
-| `oldMethod()` | `newMethod()` | Find and replace |
-| `config.legacy` | Removed | Delete from config |
+| v2              | v3            | Migration          |
+| --------------- | ------------- | ------------------ |
+| `oldMethod()`   | `newMethod()` | Find and replace   |
+| `config.legacy` | Removed       | Delete from config |
 
 ### Step-by-Step
 
@@ -507,12 +521,15 @@ For major version upgrades:
 ### Before/After
 
 \`\`\`diff
+
 - import { oldThing } from 'project';
-+ import { newThing } from 'project';
+
+* import { newThing } from 'project';
 
 - oldThing.doStuff();
-+ newThing.doStuff({ modern: true });
-\`\`\`
+
+* newThing.doStuff({ modern: true });
+  \`\`\`
 ```
 
 ---
@@ -524,17 +541,18 @@ For positioning against alternatives:
 ```markdown
 ## Comparison
 
-| Feature | This Tool | Alternative A | Alternative B |
-|---------|-----------|---------------|---------------|
-| Speed | 50ms | 200ms | 150ms |
-| Bundle size | 2kb | 15kb | 8kb |
-| TypeScript | Native | Partial | Yes |
-| Zero deps | Yes | No | No |
+| Feature     | This Tool | Alternative A | Alternative B |
+| ----------- | --------- | ------------- | ------------- |
+| Speed       | 50ms      | 200ms         | 150ms         |
+| Bundle size | 2kb       | 15kb          | 8kb           |
+| TypeScript  | Native    | Partial       | Yes           |
+| Zero deps   | Yes       | No            | No            |
 
 _Benchmarks run on [environment]. See `benchmarks/` for methodology._
 ```
 
 **Rules:**
+
 - Include methodology or link to benchmarks
 - Be honest about weaknesses
 - Use measurable metrics, not subjective claims
@@ -546,10 +564,12 @@ _Benchmarks run on [environment]. See `benchmarks/` for methodology._
 ### Badge Colours
 
 Avoid low-contrast combinations:
+
 - Light grey text on yellow background
 - White text on light green
 
 Use shields.io style parameter for consistency:
+
 ```
 ?style=flat-square&labelColor=000000
 ```
@@ -560,9 +580,11 @@ Every image must have descriptive alt text:
 
 ```markdown
 <!-- Bad -->
+
 ![](screenshot.png)
 
 <!-- Good -->
+
 ![Terminal showing installation and first command output](screenshot.png)
 ```
 
@@ -570,15 +592,142 @@ Every image must have descriptive alt text:
 
 ## Quick Reference
 
-| Position | CLI Tool | Library | Framework |
-|----------|----------|---------|-----------|
-| 1 | Hero + Preview | Hero | Hero |
-| 2 | Features | Features | Quick Start |
-| 3 | TOC | Install | Features |
-| 4 | **Install** | **Basic Usage** | Benchmarks |
-| 5 | Usage | Advanced | **Ecosystem** |
-| 6 | Config | Ecosystem | Docs |
-| 7 | Integration | Contributing | Team |
-| 8 | Benchmarks | License | License |
+| Position | CLI Tool       | Library         | Framework     |
+| -------- | -------------- | --------------- | ------------- |
+| 1        | Hero + Preview | Hero            | Hero          |
+| 2        | Features       | Features        | Quick Start   |
+| 3        | TOC            | Install         | Features      |
+| 4        | **Install**    | **Basic Usage** | Benchmarks    |
+| 5        | Usage          | Advanced        | **Ecosystem** |
+| 6        | Config         | Ecosystem       | Docs          |
+| 7        | Integration    | Contributing    | Team          |
+| 8        | Benchmarks     | License         | License       |
 
 **Bold** = Primary section for that project type.
+
+---
+
+## 15. Results & Metrics Tables
+
+Templates for presenting quantitative data with context.
+
+### Results Table
+
+For presenting metrics with targets and benchmarks:
+
+```markdown
+| Metric   | Result  | Target   | vs. Target | vs. Benchmark | Status |
+| -------- | ------- | -------- | ---------- | ------------- | ------ |
+| [Metric] | [Value] | [Target] | [+/-X%]    | [+/-X%]       | ✓/✗    |
+```
+
+**Example:**
+
+| Metric    | Result | Target | vs. Target | vs. Benchmark | Status |
+| --------- | ------ | ------ | ---------- | ------------- | ------ |
+| Build     | 180ms  | 200ms  | -10%       | -40%          | ✓      |
+| Bundle    | 12kb   | 15kb   | -20%       | -60%          | ✓      |
+| Test Time | 4.2s   | 5s     | -16%       | N/A           | ✓      |
+
+### Learnings Table
+
+For documenting insights with evidence:
+
+```markdown
+| Learning          | Evidence             | Implication           |
+| ----------------- | -------------------- | --------------------- |
+| [What we learned] | [Data supporting it] | [What to do about it] |
+```
+
+**Example:**
+
+| Learning                  | Evidence                   | Implication            |
+| ------------------------- | -------------------------- | ---------------------- |
+| Users skip long installs  | 60% bounce at step 3       | Add Docker one-liner   |
+| Config errors are common  | 40% of issues              | Add validation + hints |
+| API docs get most traffic | 3x pageviews vs quickstart | Prioritise API section |
+
+### Executive Summary Block
+
+For leading with conclusions:
+
+```markdown
+## Summary
+
+**Bottom Line**: [One-line verdict]
+
+| Metric | Result | Status |
+| ------ | ------ | ------ |
+
+**Key Takeaway**: [Most important insight]
+**Recommendation**: [Clear next action]
+```
+
+---
+
+## 16. Risk & Timeline Tables
+
+Templates for planning and tracking.
+
+### Risk Table
+
+```markdown
+| Risk | Likelihood | Impact | Mitigation |
+| ---- | ---------- | ------ | ---------- |
+```
+
+**Example:**
+
+| Risk             | Likelihood | Impact | Mitigation               |
+| ---------------- | ---------- | ------ | ------------------------ |
+| Breaking changes | Medium     | High   | Semantic versioning      |
+| Dependency CVE   | Low        | High   | Dependabot alerts        |
+| Scope creep      | High       | Medium | Strict PR review process |
+
+### Timeline Table
+
+```markdown
+| Step | When | Action | Owner | Notes |
+| ---- | ---- | ------ | ----- | ----- |
+```
+
+### Feature-Benefit-HowTo Table
+
+For feature documentation:
+
+```markdown
+| Feature | Benefit          | How to Show         |
+| ------- | ---------------- | ------------------- |
+| [Name]  | [Why user cares] | [Code/demo example] |
+```
+
+---
+
+## 17. Do/Don't Patterns
+
+Parallel structure for best practices.
+
+### Standard Format
+
+```markdown
+### Best Practices
+
+**Do:**
+
+- [Good practice 1]
+- [Good practice 2]
+
+**Don't:**
+
+- [Bad practice 1]
+- [Bad practice 2]
+```
+
+### Table Format (for detailed guidance)
+
+```markdown
+| Do                          | Don't                           | Why                        |
+| --------------------------- | ------------------------------- | -------------------------- |
+| Use specific error messages | Return generic "Error occurred" | Users need actionable info |
+| Cache expensive operations  | Recalculate on every request    | Performance matters        |
+```
