@@ -1,5 +1,5 @@
 ---
-name: creating-readmes
+name: grfp
 description: "Use when creating or updating a README. It enforces the 5-step 'Anti-Slop' pipeline and triggers the correct sub-skill for the current phase."
 ---
 

@@ -7,6 +7,7 @@
 ## 1. Project Identity
 
 ### Type Detection
+
 - [ ] Check for `bin/` directory or shebang in main file → **CLI Tool**
 - [ ] Check for `src/index.ts` with exports → **Library**
 - [ ] Check for `src/main.ts` or `app.ts` → **Application**
@@ -19,6 +20,7 @@
 - [ ] Check `Cargo.toml` for `[[bin]]` → **Rust CLI**
 
 ### Entry Points
+
 - [ ] Main export file identified
 - [ ] CLI entry point (if applicable)
 - [ ] API routes entry (if applicable)
@@ -29,6 +31,7 @@
 ## 2. Tech Stack
 
 ### Package Managers & Config Files
+
 - [ ] `package.json` - Node.js/JavaScript
 - [ ] `package-lock.json` / `yarn.lock` / `pnpm-lock.yaml`
 - [ ] `requirements.txt` / `pyproject.toml` / `Pipfile` - Python
@@ -39,6 +42,7 @@
 - [ ] `composer.json` - PHP
 
 ### Language Version Requirements
+
 - [ ] `engines` field in package.json
 - [ ] `requires-python` in pyproject.toml
 - [ ] `rust-version` in Cargo.toml
@@ -46,7 +50,9 @@
 - [ ] `.python-version`
 
 ### Framework Detection
+
 **JavaScript/TypeScript:**
+
 - [ ] `react` / `vue` / `angular` / `svelte` - Frontend
 - [ ] `express` / `fastify` / `koa` / `nest` - Backend
 - [ ] `electron` - Desktop
@@ -54,11 +60,13 @@
 - [ ] `commander` / `yargs` / `inquirer` - CLI
 
 **Python:**
+
 - [ ] `fastapi` / `flask` / `django` - Web
 - [ ] `click` / `typer` / `argparse` - CLI
 - [ ] `pytorch` / `tensorflow` / `transformers` - ML
 
 ### Build Tools
+
 - [ ] `tsconfig.json` - TypeScript
 - [ ] `webpack.config.js` - Webpack
 - [ ] `vite.config.ts` - Vite
@@ -72,22 +80,26 @@
 ## 3. Dependencies
 
 ### Heavy Lifters (Top 5-7)
+
 - [ ] List the critical runtime dependencies
 - [ ] Note any with security implications
 - [ ] Note any that require special setup
 
 ### Dev Dependencies of Note
+
 - [ ] Testing framework (`jest`, `vitest`, `pytest`, `mocha`)
 - [ ] Linting (`eslint`, `prettier`, `ruff`, `black`)
 - [ ] Type checking (`typescript`, `mypy`)
 
 ### System Dependencies
+
 - [ ] Check `Dockerfile` for `apt-get install` commands
 - [ ] Check `.github/workflows/*.yml` for setup steps
 - [ ] Check `Makefile` for prerequisite checks
 - [ ] Check `INSTALL.md` or `docs/installation.md`
 
 **Common system deps to look for:**
+
 - [ ] `libssl-dev` - cryptography
 - [ ] `libpq-dev` - PostgreSQL
 - [ ] `ffmpeg` - media processing
@@ -100,12 +112,14 @@
 ## 4. CI/Automation
 
 ### GitHub Actions
+
 - [ ] `.github/workflows/` directory exists
 - [ ] CI workflow (build/test on PR)
 - [ ] Release workflow (publish on tag)
 - [ ] Codecov/coverage action present
 
 ### Other CI
+
 - [ ] `.circleci/config.yml` - CircleCI
 - [ ] `.travis.yml` - Travis
 - [ ] `.gitlab-ci.yml` - GitLab CI
@@ -113,6 +127,7 @@
 - [ ] `azure-pipelines.yml` - Azure
 
 ### Badge Sources
+
 - [ ] Build status badge available
 - [ ] Coverage badge available
 - [ ] Version/package badge available
@@ -123,6 +138,7 @@
 ## 5. Documentation State
 
 ### Existing Docs
+
 - [ ] `README.md` exists (and current state)
 - [ ] `CONTRIBUTING.md` exists
 - [ ] `CODE_OF_CONDUCT.md` exists
@@ -133,6 +149,7 @@
 - [ ] JSDoc/docstrings present in code
 
 ### Missing Standards
+
 - [ ] Note any missing standard files
 - [ ] Note any outdated documentation
 
@@ -141,6 +158,7 @@
 ## 6. Friction Analysis
 
 ### Time-to-Joy (TTJ)
+
 - [ ] Count exact commands from clone to working result
 - [ ] TTJ = 1-2: Excellent
 - [ ] TTJ = 3: Good
@@ -148,6 +166,7 @@
 - [ ] TTJ = 6+: Needs Docker/Makefile
 
 ### Weirdness Detector
+
 - [ ] Non-standard config paths (`.codex`, `.opencode`, etc.)
 - [ ] Manual environment variable requirements
 - [ ] Undocumented prerequisites
@@ -155,6 +174,7 @@
 - [ ] Architecture constraints (x86/ARM)
 
 ### Copy-Paste Readiness
+
 - [ ] Can commands be copy-pasted without modification?
 - [ ] Are there placeholder values that need changing?
 - [ ] Are there secrets/keys required?
@@ -164,6 +184,7 @@
 ## 7. Value Proposition Sources
 
 ### Where to Find the "Why"
+
 - [ ] `package.json` description field
 - [ ] Module-level docstrings
 - [ ] JSDoc on main exports
@@ -173,16 +194,44 @@
 - [ ] Comments in main entry file
 
 ### Differentiators
+
 - [ ] What does this do that alternatives don't?
 - [ ] Performance characteristics
 - [ ] Unique features
 - [ ] Target audience
+
+### Research Parameters Template
+
+Before writing, capture context:
+
+```markdown
+### Research Parameters
+
+**Subject**: [What we're documenting]
+**Target Audience**: [Primary readers - who is this for?]
+**Goal**: [What success looks like - what should readers be able to do?]
+**Constraints**: [Limitations, must-haves, must-avoids]
+**Sources**: [Where information came from]
+```
+
+### Insight-to-Action Linking
+
+Map findings to README sections:
+
+| Research Finding                | Section It Informs             |
+| ------------------------------- | ------------------------------ |
+| Target audience characteristics | "Who This Is For" section      |
+| Common user problems            | "Features" framing             |
+| Competitor gaps                 | "Why This Project" positioning |
+| User language patterns          | Terminology choices            |
+| Installation friction points    | Quick Start optimisation       |
 
 ---
 
 ## 8. User Context (from Chat History)
 
 ### If `~/.claude/history.jsonl` exists:
+
 - [ ] Grep for project path
 - [ ] Look for "How do I..." patterns (knowledge gaps)
 - [ ] Look for "Error..." patterns (common pitfalls)
@@ -190,13 +239,14 @@
 - [ ] Look for repeated questions (documentation needs)
 
 ### README Implications
-| Pattern Found | README Implication |
-|---------------|-------------------|
-| Config questions | Detailed configuration section |
-| Debugging struggles | Troubleshooting section |
-| "How do I test" | Testing section with examples |
-| Performance questions | Performance section |
-| Deployment questions | Deployment guides |
+
+| Pattern Found         | README Implication             |
+| --------------------- | ------------------------------ |
+| Config questions      | Detailed configuration section |
+| Debugging struggles   | Troubleshooting section        |
+| "How do I test"       | Testing section with examples  |
+| Performance questions | Performance section            |
+| Deployment questions  | Deployment guides              |
 
 ---
 
@@ -208,6 +258,7 @@ After checking all items, synthesise into:
 # Deep Dive Findings
 
 ## Project Overview
+
 - **Type:** [CLI/library/framework/plugin/app/API]
 - **Tech Stack:** [languages, frameworks]
 - **Value Proposition:** [1-2 sentence problem/solution]
@@ -215,26 +266,31 @@ After checking all items, synthesise into:
 - **Confidence:** [High/Medium/Low]
 
 ## Dependencies
+
 - **Runtime:** [Node 18+, Python 3.10+, etc.]
 - **System:** [any system dependencies]
 - **Heavy Lifters:** [top 3-5 critical deps]
 
 ## Friction Report
+
 - **TTJ:** [X] commands
 - **Install Complexity:** [Low/Med/High]
 - **Weirdness:** [any gotchas]
 - **Platform Limits:** [any constraints]
 
 ## Documentation State
+
 - **Existing:** [what exists]
 - **Missing:** [what's needed]
 - **Badge Sources:** [available CI/coverage/version]
 
 ## User Context
+
 - **Common Struggles:** [from chat history]
 - **Decisions Made:** [key decisions]
 
 ## Missing Information (Blockers)
+
 - [ ] [anything you couldn't determine]
 ```
 
