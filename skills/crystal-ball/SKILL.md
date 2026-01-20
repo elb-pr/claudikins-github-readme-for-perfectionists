@@ -1,6 +1,6 @@
 ---
 name: crystal-ball
-description: "Analyses codebase for future opportunities: performance improvements, technical debt, security hardening, and feature gaps. Outputs roadmap candidates table. Use after deep-dive."
+description: "Use when analysing future opportunities after deep-dive phase. Identifies performance improvements, technical debt, security hardening, and feature gaps. Outputs roadmap candidates table."
 ---
 
 # The Crystal Ball

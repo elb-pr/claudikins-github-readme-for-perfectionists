@@ -1,20 +1,13 @@
 {
   "name": "claudikins-grfp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Five rituals for README perfection: /deep-dive the codebase, /crystal-ball the roadmap, /brain-jam with Gemini, enter the /think-tank, then /pen-wielding to write.",
   "author": {
-    "name": "Ethan Lee"
+    "name": "elb-pr",
+    "email": "elb.pr.contact@gmail.com"
   },
-  "keywords": [
-    "readme",
-    "documentation",
-    "github",
-    "claude-code",
-    "gemini",
-    "deep-dive",
-    "crystal-ball",
-    "brain-jam",
-    "think-tank",
-    "pen-wielding"
-  ]
+  "homepage": "https://github.com/elb-pr/claudikins-github-readme-for-perfectionists",
+  "repository": "https://github.com/elb-pr/claudikins-github-readme-for-perfectionists",
+  "license": "MIT",
+  "keywords": ["claude-code", "readme", "documentation", "github", "gemini", "claudikins"]
 }

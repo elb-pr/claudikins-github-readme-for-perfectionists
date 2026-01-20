@@ -1,6 +1,6 @@
 ---
 name: deep-dive
-description: "Extracts technical facts from codebase: project type, tech stack, dependencies, entry points, CI configuration. First step in README pipeline. Outputs Reality Report."
+description: "Use when starting the README pipeline to extract technical facts from codebase. Identifies project type, tech stack, dependencies, entry points, CI configuration. Outputs Reality Report."
 ---
 
 # The Deep Dive

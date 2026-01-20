@@ -1,6 +1,6 @@
 ---
 name: pen-wielding
-description: "Writes the complete README by synthesising outputs from deep-dive, crystal-ball, brain-jam, and think-tank. Applies Anti-Slop style guide and structural templates. Final step in pipeline."
+description: "Use when writing the final README after all phases complete. Synthesises outputs from deep-dive, crystal-ball, brain-jam, and think-tank. Applies Anti-Slop style guide."
 ---
 
 # Pen-Wielding Protocol

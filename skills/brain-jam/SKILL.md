@@ -1,6 +1,6 @@
 ---
 name: brain-jam
-description: "Conducts a multi-turn brainstorming session with Gemini to determine project tone, voice, and marketing angle. Use after deep-dive and crystal-ball, before think-tank."
+description: "Use when determining project tone, voice, and marketing angle after deep-dive and crystal-ball phases. Conducts brainstorming session with Gemini."
 ---
 
 # The Brain-Jam

@@ -1,6 +1,6 @@
 ---
 name: think-tank
-description: "Researches exemplar READMEs from similar high-star repositories. Scores them against rubric, extracts patterns to borrow, identifies anti-patterns to avoid. Use after brain-jam, before pen-wielding."
+description: "Use when researching documentation patterns after brain-jam phase. Analyses exemplar READMEs from similar high-star repositories, scores against rubric, extracts patterns."
 ---
 
 # The Think-Tank
